@@ -14,23 +14,35 @@ function DashboardCard04() {
     datasets: [
       // Light blue bars
       {
-        label: 'Direct',
+        label: 'Mask',
         data: [
-          800, 1600, 900, 1300, 1950, 1700,
+          80, 60, 90, 30, 78, 70,
         ],
-        backgroundColor: tailwindConfig().theme.colors.blue[400],
-        hoverBackgroundColor: tailwindConfig().theme.colors.blue[500],
+        backgroundColor: tailwindConfig().theme.colors.indigo[400],
+        hoverBackgroundColor: tailwindConfig().theme.colors.indigo[500],
         barPercentage: 0.66,
         categoryPercentage: 0.66,
       },
       // Blue bars
       {
-        label: 'Indirect',
+        label: 'No Mask',
         data: [
-          4900, 2600, 5350, 4800, 5200, 4800,
+          49, 26, 53, 48, 52, 48,
         ],
-        backgroundColor: tailwindConfig().theme.colors.indigo[500],
-        hoverBackgroundColor: tailwindConfig().theme.colors.indigo[600],
+        backgroundColor: tailwindConfig().theme.colors.yellow[500],
+        hoverBackgroundColor: tailwindConfig().theme.colors.yellow[600],
+        barPercentage: 0.66,
+        categoryPercentage: 0.66,
+      },
+
+      // Blue bars
+      {
+        label: 'Wrong Mask',
+        data: [
+          20, 22, 35, 44, 15, 8,
+        ],
+        backgroundColor: tailwindConfig().theme.colors.red[500],
+        hoverBackgroundColor: tailwindConfig().theme.colors.red[600],
         barPercentage: 0.66,
         categoryPercentage: 0.66,
       },
@@ -40,7 +52,7 @@ function DashboardCard04() {
   return (
     <div className="flex flex-col col-span-full sm:col-span-6 bg-white shadow-lg rounded-sm border border-slate-200">
       <header className="px-5 py-4 border-b border-slate-100">
-        <h2 className="font-semibold text-slate-800">Direct VS Indirect</h2>
+        <h2 className="font-semibold text-slate-800">Mask VS No Mask VS Wrong Mask</h2>
       </header>
       {/* Chart built with Chart.js 3 */}
       {/* Change the height attribute to adjust the chart height */}
