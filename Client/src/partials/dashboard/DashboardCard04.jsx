@@ -56,7 +56,7 @@ function DashboardCard04() {
       </header>
       {/* Chart built with Chart.js 3 */}
       {/* Change the height attribute to adjust the chart height */}
-      <BarChart data={chartData} width={595} height={500} />
+      <BarChart data={chartData} width={595} height={430} />
     </div>
   );
 }
