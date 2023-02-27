@@ -40,7 +40,7 @@ function UserMenu() {
         aria-haspopup="true"
         onClick={() => setDropdownOpen(!dropdownOpen)}
         aria-expanded={dropdownOpen}
-      ><h1>sasd</h1>
+      >
         <img className="w-8 h-8 rounded-full" src={UserAvatar} width="32" height="32" alt="User" />
         <div className="flex items-center truncate">
           <span className="truncate ml-2 text-sm font-medium group-hover:text-slate-800">CPE Inc.</span>

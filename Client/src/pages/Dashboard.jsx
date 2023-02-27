@@ -9,7 +9,12 @@ import DashboardCard04 from '../partials/dashboard/DashboardCard04';
 
 
 function Dashboard() {
-
+  const [maskList, setMaskList] = useState([]);
+  const getMaskList = () => {
+    Axios.get('http://localhost:3001/').then((response) => {
+      setMaskList(response.data);
+    });
+  }
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
@@ -32,7 +37,18 @@ function Dashboard() {
 
             {/* Dashboard actions */}
             <div className="sm:flex sm:justify-between sm:items-center mb-8">
-            Face Mask Detection
+            <button class="btn btn-primary" onClick={getMaskList}>
+                Show Status
+              </button>
+              {maskList.map((val, key) => {
+                return (
+                  <div className="">
+                    <div className="">
+                      <p className="card-text">Name: {val.Status}</p>
+                    </div>
+                  </div>
+                )
+              })}
               {/* Right: Actions */}
               <div className="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
                 {/* Filter button */}

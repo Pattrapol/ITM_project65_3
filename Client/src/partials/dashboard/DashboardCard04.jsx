@@ -3,20 +3,23 @@ import BarChart from '../../charts/BarChart01';
 
 // Import utilities
 import { tailwindConfig } from '../../utils/Utils';
+import Axios from 'axios'
+function DashboardCard04() { 
 
-function DashboardCard04() {
-
+ 
+  
   const chartData = {
     labels: [
       '12-01-2020', '01-01-2021', '02-01-2021',
       '03-01-2021', '04-01-2021', '05-01-2021',
     ],
+    
     datasets: [
       // Light blue bars
       {
         label: 'Mask',
         data: [
-          80, 60, 90, 30, 78, 70,
+          8, 60, 90, 30, 78, 70,
         ],
         backgroundColor: tailwindConfig().theme.colors.indigo[400],
         hoverBackgroundColor: tailwindConfig().theme.colors.indigo[500],
@@ -48,6 +51,7 @@ function DashboardCard04() {
       },
     ],
   };
+
 
   return (
     <div className="flex flex-col col-span-full sm:col-span-6 bg-white shadow-lg rounded-sm border border-slate-200">
