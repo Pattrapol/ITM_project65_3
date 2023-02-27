@@ -5,17 +5,25 @@ import Header from '../partials/Header';
 
 import Datepicker from '../partials/actions/Datepicker';
 import DashboardCard04 from '../partials/dashboard/DashboardCard04';
+import Axios from 'axios';
 
 
 
+//export {lable2};
 function Dashboard() {
-  const [maskList, setMaskList] = useState([]);
+  
+const [maskList, setMaskList] = useState([]);
   const getMaskList = () => {
     Axios.get('http://localhost:3001/').then((response) => {
       setMaskList(response.data);
     });
   }
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  
+  const lable =Object.keys(maskList);
+  const lable2 =Object.values(maskList);
+  
+ console.log(lable);
 
   return (
     <div className="flex h-screen overflow-hidden">

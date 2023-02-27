@@ -3,10 +3,11 @@ import BarChart from '../../charts/BarChart01';
 
 // Import utilities
 import { tailwindConfig } from '../../utils/Utils';
-import Axios from 'axios'
+import Axios from 'axios';
+//import {lable2} from '../../pages/Dashboard';
 function DashboardCard04() { 
+  
 
- 
   
   const chartData = {
     labels: [
@@ -14,10 +15,11 @@ function DashboardCard04() {
       '03-01-2021', '04-01-2021', '05-01-2021',
     ],
     
+   
     datasets: [
       // Light blue bars
       {
-        label: 'Mask',
+        label:'Mask',
         data: [
           8, 60, 90, 30, 78, 70,
         ],
