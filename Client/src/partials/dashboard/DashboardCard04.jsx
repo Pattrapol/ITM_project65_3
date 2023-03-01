@@ -3,33 +3,51 @@ import BarChart from '../../charts/BarChart01';
 
 // Import utilities
 import { tailwindConfig } from '../../utils/Utils';
-import Axios from 'axios';
+import { useEffect } from "react";
+import { useState } from "react";
+import axios from "axios";
 //import {lable2} from '../../pages/Dashboard';
 function DashboardCard04() { 
   
+  const [maskList, setMaskList] = useState([]);
 
+  useEffect(() => {
+    const fetchAllData = async () => {
+      try {
+        const res = await axios.get("http://localhost:3001/");
+        setMaskList(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchAllData();
+  }, []);
+
+  //console.log(books);
+
+  let arr1 = [];
+  {maskList.map((mask) => (
+    arr1.push(mask.Amount)
+  ))}
+
+  console.log(arr1);
   
   const chartData = {
     labels: [
       '12-01-2020', '01-01-2021', '02-01-2021',
-      '03-01-2021', '04-01-2021', '05-01-2021',
+      '03-01-2021',
     ],
-    
-   
     datasets: [
-      // Light blue bars
       {
         label:'Mask',
-        data: [
-          8, 60, 90, 30, 78, 70,
-        ],
+        data: arr1,
         backgroundColor: tailwindConfig().theme.colors.indigo[400],
         hoverBackgroundColor: tailwindConfig().theme.colors.indigo[500],
         barPercentage: 0.66,
         categoryPercentage: 0.66,
       },
       // Blue bars
-      {
+      /*{
         label: 'No Mask',
         data: [
           49, 26, 53, 48, 52, 48,
@@ -50,7 +68,7 @@ function DashboardCard04() {
         hoverBackgroundColor: tailwindConfig().theme.colors.red[600],
         barPercentage: 0.66,
         categoryPercentage: 0.66,
-      },
+      },*/
     ],
   };
 
@@ -62,6 +80,7 @@ function DashboardCard04() {
       </header>
       {/* Chart built with Chart.js 3 */}
       {/* Change the height attribute to adjust the chart height */}
+      <button className="delete" onClick={() => handleDelete(book.id)}>Delete</button>
       <BarChart data={chartData} width={595} height={430} />
     </div>
   );
