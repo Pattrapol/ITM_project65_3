@@ -11,11 +11,15 @@ import Axios from 'axios';
 
 //export {lable2};
 function Dashboard() {
-  
+
+const showChart=["LineChart","CircleChart"];
+const[myChart,setMyChart]=useState('');
+
 const [maskList, setMaskList] = useState([]);
   const getMaskList = () => {
     Axios.get('http://localhost:3001/').then((response) => {
       setMaskList(response.data);
+      
     });
   }
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -45,8 +49,8 @@ const [maskList, setMaskList] = useState([]);
 
             {/* Dashboard actions */}
             <div className="sm:flex sm:justify-between sm:items-center mb-8">
-            <button class="btn btn-primary" onClick={getMaskList}>
-                Show Status
+            <button class="btn btn-primary" onClick={ getMaskList}>
+                Show Chart
               </button>
               {maskList.map((val, key) => {
                 return (
@@ -74,7 +78,36 @@ const [maskList, setMaskList] = useState([]);
 
             </div>
             <div >
-              <DashboardCard04 />
+            <div
+                        className="btn-group"
+                        role="group"
+                        aria-label="Basic example"
+                    >
+                        {showChart.map(showChart => (
+                            <button
+                                type="button"
+                                key={showChart}
+                                className={"btn btn-light border-dark "}
+                                onClick={() => setMyChart(showChart)}
+                            >
+                                {showChart.toLocaleUpperCase()}
+                            </button>
+                        ))}
+                    </div>
+                    <div className="col text-center">
+                    <p>{myChart}</p>
+
+                    <p>
+                        {myChart === "LineChart" && (
+                          getMaskList(),
+                            <DashboardCard04/>
+                        )}
+                        {myChart === "CircleChart" && (
+                            <DashboardCard04/>
+                        )}
+                        
+                    </p>
+                </div>
             </div>
           </div>
         </main>
