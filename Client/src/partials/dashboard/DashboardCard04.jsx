@@ -4,7 +4,7 @@ import BarChart from '../../charts/BarChart01';
 // Import utilities
 import { tailwindConfig } from '../../utils/Utils';
 import Axios from 'axios';
-//import {lable2} from '../../pages/Dashboard';
+
 function DashboardCard04() { 
   
 
