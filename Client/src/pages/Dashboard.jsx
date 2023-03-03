@@ -1,229 +1,70 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from 'react';
 
-import Sidebar from "../partials/Sidebar";
-import Header from "../partials/Header";
-import BarChart from "../charts/BarChart01";
+import Sidebar from '../partials/Sidebar';
+import Header from '../partials/Header';
 
-import Datepicker from "../partials/actions/Datepicker";
-import DashboardCard04 from "../partials/dashboard/DashboardCard04";
-import Axios from "axios";
-import { tailwindConfig } from "../utils/Utils";
+import Datepicker from '../partials/actions/Datepicker';
+import DashboardCard04 from '../partials/dashboard/DashboardCard04';
+import Axios from 'axios';
+
+
 
 //export {lable2};
 function Dashboard() {
-  const showChart = ["LineChart", "CircleChart"];
-  const [myChart, setMyChart] = useState("");
 
-  const [maskAllList, setMaskAllList] = useState([]);
-  const getMaskAllList = () => {
-    Axios.get("http://localhost:3001/").then((response) => {
-      setMaskAllList(response.data);
-    });
-  };
+const showChart=["LineChart","CircleChart"];
+const[myChart,setMyChart]=useState('');
 
-  const [maskList, setMaskList] = useState([]);
-  const getMaskList = () => {
-    Axios.get("http://localhost:3001/mask").then((response) => {
-      setMaskList(response.data);
-    });
-  };
-
-  const [maskList1, setNoMaskList] = useState([]);
-  const getNoMaskList = () => {
-    Axios.get("http://localhost:3001/nomask").then((response) => {
-      setNoMaskList(response.data);
-    });
-  };
-
-  //ทั้งหมด
-  var dataMaskAllDate = [];
-  /*function fetchMaskAllDate() {
-    {
-      maskAllList.map((val, key) => {
-        {
-          dataMaskAllDate.push(val.Date);
-        }
-      });
-    }
-    console.log("dataMaskAllDate = " + dataMaskAllDate);
-    return dataMaskAllDate;
-  }*/
-
-  //ใส่
-  var dataMaskDate = [];
-  /*function fetchMaskDate() {
-    {
-      maskList.map((val, key) => {
-        {
-          dataMaskDate.push(val.Date);
-        }
-      });
-    }
-    console.log("dataMaskDate = " + dataMaskDate);
-    return dataMaskDate;
-  }*/
-  var dataMask = [];
-  /*function fetchMask() {
-    {
-      maskList.map((val, key) => {
-        {
-          dataMask.push(val.Amount);
-        }
-      });
-    }
-    console.log("datamask = " + dataMask);
-    return dataMask;
-  }*/
-  //ไม่ใส่
-  var dataMaskDate1 = [];
-  /*function fetchNoMaskDate() {
-    {
-      maskList1.map((val, key) => {
-        {
-          dataMaskDate1.push(val.Date);
-        }
-      });
-    }
-    console.log("dataMaskDate1 = " + dataMaskDate1);
-    return dataMaskDate1;
-  }*/
-  var dataMask1 = [];
-  /*function fetchNoMask() {
-    {
-      maskList1.map((val, key) => {
-        {
-          dataMask1.push(val.Amount);
-        }
-      });
-    }
-    console.log("dataMask1 = " + dataMask1);
-    return dataMask1;
-  }*/
-
-  const chartData = {
-    labels: dataMaskAllDate,
-
-    datasets: [
-      // Light blue bars
-      {
-        label: "Mask",
-        data: dataMask,
-        backgroundColor: tailwindConfig().theme.colors.indigo[400],
-        hoverBackgroundColor: tailwindConfig().theme.colors.indigo[500],
-        barPercentage: 0.66,
-        categoryPercentage: 0.66,
-      },
-      // Blue bars
-      {
-        label: "No Mask",
-        data: dataMask1,
-        backgroundColor: tailwindConfig().theme.colors.yellow[500],
-        hoverBackgroundColor: tailwindConfig().theme.colors.yellow[600],
-        barPercentage: 0.66,
-        categoryPercentage: 0.66,
-      },
-
-    ],
-  };
-
-  //const lable =Object.keys(maskList);
-  //const lable2 =Object.values(maskList);
-
-  //console.log(lable);
-
-  /*const [maskList, setMaskList] = useState([]);
+const [maskList, setMaskList] = useState([]);
   const getMaskList = () => {
     Axios.get('http://localhost:3001/').then((response) => {
       setMaskList(response.data);
       
     });
-  }*/
+  }
   const [sidebarOpen, setSidebarOpen] = useState(false);
-
-  //const lable =Object.keys(maskList);
-  //const lable2 =Object.values(maskList);
-
-  //console.log(lable);
+  
+  const lable =Object.keys(maskList);
+  const lable2 =Object.values(maskList);
+  
+ console.log(lable);
 
   return (
     <div className="flex h-screen overflow-hidden">
+
       {/* Sidebar */}
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
       {/* Content area */}
       <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
+
         {/*  Site header */}
         <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
         <main>
           <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
+
             {/* Welcome banner */}
+            
 
             {/* Dashboard actions */}
             <div className="sm:flex sm:justify-between sm:items-center mb-8">
-              {
-                <button
-                  class="btn btn-primary"
-                  onClick={getMaskAllList}
-                >
-                  Show Chart
-                </button>
-              }
-              {maskAllList.map((val, key) => {
-                return (
-                  <div className="">
-                    <div className="">
-                      <p className="card-text">
-                        {dataMaskAllDate.push(val.Date)}
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
-              {
-                <button
-                  class="btn btn-primary"
-                  onClick={getMaskList}
-                >
-                  Show Chart
-                </button>
-              }
+            <button class="btn btn-primary" onClick={ getMaskList}>
+                Show Chart
+              </button>
               {maskList.map((val, key) => {
                 return (
                   <div className="">
                     <div className="">
-                      <p className="card-text">
-                        {dataMaskDate.push(val.Date)}
-                        {dataMask.push(val.Amount)}
-                      </p>
+                      <p className="card-text">Name: {val.Status}</p>
                     </div>
                   </div>
-                );
-              })}
-              {
-                <button
-                  class="btn btn-primary"
-                  onClick={getNoMaskList}
-                >
-                  Show Chart
-                </button>
-              }
-              {maskList1.map((val, key) => {
-                return (
-                  <div className="">
-                    <div className="">
-                      <p className="card-text">
-                        {dataMaskDate1.push(val.Date)}
-                        {dataMask1.push(val.Amount)}
-                      </p>
-                    </div>
-                  </div>
-                );
+                )
               })}
               {/* Right: Actions */}
               <div className="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
                 {/* Filter button */}
-
+                
                 {/* Datepicker built with flatpickr */}
                 <Datepicker />
                 {/* Add view button */}
@@ -234,57 +75,43 @@ function Dashboard() {
                     <span className="hidden xs:block ml-2">Add view</span>
                 </button>                 */}
               </div>
-            </div>
-            <div>
-              <div
-                className="btn-group"
-                role="group"
-                aria-label="Basic example"
-              >
-                {showChart.map((showChart) => (
-                  <button
-                    type="button"
-                    key={showChart}
-                    className={"btn btn-light border-dark "}
-                    onClick={() => setMyChart(showChart)}
-                  >
-                    {showChart.toLocaleUpperCase()}
-                  </button>
-                ))}
-              </div>
-              <div className="col text-center">
-                <p>{myChart}</p>
 
-                <p>
-                  {myChart === "LineChart" && (
-                    <div className="flex flex-col col-span-full sm:col-span-6 bg-white shadow-lg rounded-sm border border-slate-200">
-                      <header className="px-5 py-4 border-b border-slate-100">
-                        <h2 className="font-semibold text-slate-800">
-                          Mask VS No Mask VS Wrong Mask
-                        </h2>
-                      </header>
-                      {/* Chart built with Chart.js 3 */}
-                      {/* Change the height attribute to adjust the chart height */}
-                      <BarChart data={chartData} width={595} height={430} />
+            </div>
+            <div >
+            <div
+                        className="btn-group"
+                        role="group"
+                        aria-label="Basic example"
+                    >
+                        {showChart.map(showChart => (
+                            <button
+                                type="button"
+                                key={showChart}
+                                className={"btn btn-light border-dark "}
+                                onClick={() => setMyChart(showChart)}
+                            >
+                                {showChart.toLocaleUpperCase()}
+                            </button>
+                        ))}
                     </div>
-                  )}
-                  {myChart === "CircleChart" && (
-                    <div className="flex flex-col col-span-full sm:col-span-6 bg-white shadow-lg rounded-sm border border-slate-200">
-                      <header className="px-5 py-4 border-b border-slate-100">
-                        <h2 className="font-semibold text-slate-800">
-                          Mask VS No Mask VS Wrong Mask
-                        </h2>
-                      </header>
-                      {/* Chart built with Chart.js 3 */}
-                      {/* Change the height attribute to adjust the chart height */}
-                      <BarChart data={chartData} width={595} height={430} />
-                    </div>
-                  )}
-                </p>
-              </div>
+                    <div className="col text-center">
+                    <p>{myChart}</p>
+
+                    <p>
+                        {myChart === "LineChart" && (
+                          getMaskList(),
+                            <DashboardCard04/>
+                        )}
+                        {myChart === "CircleChart" && (
+                            <DashboardCard04/>
+                        )}
+                        
+                    </p>
+                </div>
             </div>
           </div>
         </main>
+
       </div>
     </div>
   );

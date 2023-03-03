@@ -14,7 +14,7 @@ const db = mysql.createConnection({
 })
 
 app.get('/', (req, res) => {
-    db.query("SELECT DATE_FORMAT(DateTime, '%l-%d-%Y') AS Date, COUNT(Status) AS Amount, Status FROM `maskdetect` GROUP BY CAST(DateTime AS DATE), Status ORDER BY DateTime, Status;", (err, result) => {
+    db.query("SELECT CAST(DateTime AS DATE) AS Date, COUNT(Status) AS Amount, Status FROM `maskdetect` GROUP BY CAST(DateTime AS DATE), Status ORDER BY DateTime, Status;", (err, result) => {
         if (err) {
             console.log(err);
         }
@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/mask', (req, res) => {
-    db.query("SELECT DATE_FORMAT(DateTime, '%l-%d-%Y') AS Date, COUNT(Status) AS Amount, Status FROM `maskdetect` WHERE Status = 'ใส่' GROUP BY CAST(DateTime AS DATE) ORDER BY DateTime;", (err, result) => {
+    db.query("SELECT CAST(DateTime AS DATE) AS Date, COUNT(Status) AS Amount, Status FROM `maskdetect` WHERE Status = 'ใส่' GROUP BY CAST(DateTime AS DATE) ORDER BY DateTime;", (err, result) => {
         if (err) {
             console.log(err);
         }
@@ -36,7 +36,7 @@ app.get('/mask', (req, res) => {
 });
 
 app.get('/nomask', (req, res) => {
-    db.query("SELECT DATE_FORMAT(DateTime, '%l-%d-%Y') AS Date, COUNT(Status) AS Amount, Status FROM `maskdetect` WHERE Status = 'ไม่ใส่' GROUP BY CAST(DateTime AS DATE) ORDER BY DateTime;", (err, result) => {
+    db.query("SELECT CAST(DateTime AS DATE) AS Date, COUNT(Status) AS Amount, Status FROM `maskdetect` WHERE Status = 'ไม่ใส่' GROUP BY CAST(DateTime AS DATE) ORDER BY DateTime;", (err, result) => {
         if (err) {
             console.log(err);
         }
@@ -47,7 +47,7 @@ app.get('/nomask', (req, res) => {
 });
 
 app.get('/wrongmask', (req, res) => {
-    db.query("SELECT DATE_FORMAT(DateTime, '%l-%d-%Y') AS Date, COUNT(Status) AS Amount, Status FROM `maskdetect` WHERE Status = 'ใส่ผิด' GROUP BY CAST(DateTime AS DATE) ORDER BY DateTime;", (err, result) => {
+    db.query("SELECT CAST(DateTime AS DATE) AS Date, COUNT(Status) AS Amount, Status FROM `maskdetect` WHERE Status = 'ใส่ผิด' GROUP BY CAST(DateTime AS DATE) ORDER BY DateTime;", (err, result) => {
         if (err) {
             console.log(err);
         }
