@@ -61,7 +61,7 @@ function BarChart01({
         },
         plugins: {
           legend: {
-            display: false,
+            display: true,
           },
           tooltip: {
             callbacks: {
@@ -149,10 +149,12 @@ function BarChart01({
 
   return (
     <React.Fragment>
-      <div className="px-5 py-3">
+      <div className="px-5 py-3"> 
         <ul ref={legend} className="flex flex-wrap"></ul>
+        
       </div>
       <div className="grow">
+      
         <canvas ref={canvas} width={width} height={height}></canvas>
       </div>
     </React.Fragment>

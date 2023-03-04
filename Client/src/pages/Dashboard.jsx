@@ -6,7 +6,13 @@ import BarChart from '../charts/BarChart01';
 import Datepicker from '../partials/actions/Datepicker';
 import { tailwindConfig } from '../utils/Utils';
 
+import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap/dist/js/bootstrap.bundle.min";
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"></link>
 import Axios from 'axios';
+
 var dataMaskAllDate = [];
 /*function fetchMaskAllDate() {
   {
@@ -168,7 +174,7 @@ function Dashboard() {
 
             {/* Dashboard actions */}
             <div className="sm:flex sm:justify-between sm:items-center mb-8">
-              <button class="btn btn-primary" onClick={getMaskList}>
+              {/* <button class="btn btn-primary" onClick={getMaskList}>
                 Show Chart
               </button>
               {maskList.map((val, key) => {
@@ -179,13 +185,14 @@ function Dashboard() {
                     </div>
                   </div>
                 )
-              })}
+              })} */}
               {/* Right: Actions */}
-              <div className="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
+              <div className="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-start gap-2">
                 {/* Filter button */}
                 
                 {/* Datepicker built with flatpickr */}
                 <Datepicker />
+                
                 {/* Add view button */}
                 {/* <button className="btn bg-indigo-500 hover:bg-indigo-600 text-white">
                     <svg className="w-4 h-4 fill-current opacity-50 shrink-0" viewBox="0 0 16 16">
@@ -243,7 +250,10 @@ function DashboardCard04() {
       // Light blue bars
       {
         label: 'Mask',
-        data: dataMask,
+        // data: dataMask,
+        data: [
+          20, 22, 35, 44, 10, 8,
+        ],
         backgroundColor: tailwindConfig().theme.colors.indigo[400],
         hoverBackgroundColor: tailwindConfig().theme.colors.indigo[500],
         barPercentage: 0.66,
@@ -252,7 +262,10 @@ function DashboardCard04() {
       // Blue bars
       {
         label: 'No Mask',
-        data: dataMask1,
+       // data: dataMask1,
+        data: [
+          20, 22, 35, 44, 10, 8,
+        ],
         backgroundColor: tailwindConfig().theme.colors.yellow[500],
         hoverBackgroundColor: tailwindConfig().theme.colors.yellow[600],
         barPercentage: 0.66,
@@ -260,29 +273,38 @@ function DashboardCard04() {
       },
 
       // Blue bars
-      {
-        label: 'Wrong Mask',
-        data: [
-          20, 22, 35, 44, 15, 8,
-        ],
-        backgroundColor: tailwindConfig().theme.colors.red[500],
-        hoverBackgroundColor: tailwindConfig().theme.colors.red[600],
-        barPercentage: 0.66,
-        categoryPercentage: 0.66,
-      },
+      // {
+      //   label: 'Refresh',
+      //   data: [
+      //     20, 22, 35, 44, 10, 8,
+      //   ],
+      //   backgroundColor: tailwindConfig().theme.colors.red[500],
+      //   hoverBackgroundColor: tailwindConfig().theme.colors.red[600],
+      //   barPercentage: 0.66,
+      //   categoryPercentage: 0.66,
+      // },
     ],
   };
 
 
   return (
-    <div className="flex flex-col col-span-full sm:col-span-6 bg-white shadow-lg rounded-sm border border-slate-200">
+    <div>
+      <div className="grid grid-flow-col sm:auto-cols-max justify-end sm:justify-end gap-2">
+        <button class="btn btn-primary" >Refresh</button>
+      </div>
+      
+      <div className="flex flex-col col-span-full sm:col-span-6 bg-white shadow-lg rounded-sm border border-slate-200">
       <header className="px-5 py-4 border-b border-slate-100">
-        <h2 className="font-semibold text-slate-800">Mask VS No Mask VS Wrong Mask</h2>
+          <h2 className=" text-slate-800">Mask VS No Mask</h2>        
       </header>
+      
       {/* Chart built with Chart.js 3 */}
       {/* Change the height attribute to adjust the chart height */}
       <BarChart data={chartData} width={595} height={430} />
+      
     </div>
+    </div>
+    
   );
 }
 

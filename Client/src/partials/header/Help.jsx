@@ -77,7 +77,7 @@ function Help() {
             <li>
               <Link
                 className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
-                to="#0"
+                to="https://www.canva.com/design/DAEphSvi--c/WaE5cYb1TFoT4_6_TKVsbA/edit?utm_content=DAEphSvi--c&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
                 onClick={() => setDropdownOpen(!dropdownOpen)}
               >
                 <svg className="w-3 h-3 fill-current text-indigo-300 shrink-0 mr-2" viewBox="0 0 12 12">
@@ -88,8 +88,8 @@ function Help() {
             </li>
             <li>
               <Link
-                className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
-                to="#0"
+                className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"target="_blank"
+                to="https://github.com/Pattrapol"
                 onClick={() => setDropdownOpen(!dropdownOpen)}
               >
                 <svg className="w-3 h-3 fill-current text-indigo-300 shrink-0 mr-2" viewBox="0 0 12 12">

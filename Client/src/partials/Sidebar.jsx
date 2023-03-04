@@ -77,9 +77,11 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
             </svg>
           </button>
           {/* Logo */}
+          MIT GROUP4
           <NavLink end to="/" className="block">
             <svg width="32" height="32" viewBox="0 0 32 32">
               <defs>
+                
                 <linearGradient x1="28.538%" y1="20.229%" x2="100%" y2="108.156%" id="logo-a">
                   <stop stopColor="#A5B4FC" stopOpacity="0" offset="0%" />
                   <stop stopColor="#A5B4FC" offset="100%" />
@@ -148,7 +150,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                               />
                             </svg>
                             <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                              Dashboard
+                              ข้อมูลการใส่แมสก์
                             </span>
                           </div>
                           {/* Icon */}
@@ -180,9 +182,9 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                               to="/"
                               className="block text-slate-400 hover:text-slate-200 transition duration-150 truncate"
                             >
-                              <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                              {/* <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                                 Report Table
-                              </span>
+                              </span> */}
                             </NavLink>
                           </li>
                           
