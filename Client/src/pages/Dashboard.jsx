@@ -3,8 +3,10 @@ import React, { useState } from 'react';
 import Sidebar from '../partials/Sidebar';
 import Header from '../partials/Header';
 import BarChart from '../charts/BarChart01';
-import Datepicker from '../partials/actions/Datepicker';
+// import Datepicker from '../partials/actions/Datepicker';
 import { tailwindConfig } from '../utils/Utils';
+import Flatpickr from 'react-flatpickr';
+
 
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.bundle.min";
@@ -78,6 +80,9 @@ var dataMask1 = [];
 }*/
 
 //export {lable2};
+var dateQuery = "";
+var dateQuery2 = "";
+
 let check = 0;
 function Dashboard() {
 
@@ -92,9 +97,23 @@ function Dashboard() {
     {
       maskAllList.map((val, key) => {
         dataMaskAllDate.push(val.Date)
+        console.log(dataMaskAllDate);
       })
     }
   };
+
+  const changeTime = () => {
+    Axios.get("http://localhost:3001/timeat", { params: { dateQuery: dateQuery, dateQuery2: dateQuery2 } }).then((response) => {
+      console.log(response.data);
+      setMaskAllList(response.data);
+    });
+    {
+      maskAllList.map((val, key) => {
+        //dataMaskAllDate.splice(0,dataMaskAllDate.length);
+        dataMaskAllDate.push(val.Date)
+      })
+    }
+  }
 
   const [maskList, setMaskList] = useState([]);
   const getMaskList = () => {
@@ -109,6 +128,19 @@ function Dashboard() {
     }
   };
 
+  const changeTimeMask = () => {
+    Axios.get("http://localhost:3001/maskat", { params: { dateQuery: dateQuery, dateQuery2: dateQuery2 } }).then((response) => {
+      console.log(response.data);
+      setMaskList(response.data);
+    });
+    {
+      maskList.map((val, key) => {
+        dataMaskDate.push(val.Date),
+          dataMask.push(val.Amount)
+      })
+    }
+  }
+
   const [maskList1, setNoMaskList] = useState([]);
   const getNoMaskList = () => {
     Axios.get("http://localhost:3001/nomask").then((response) => {
@@ -122,6 +154,19 @@ function Dashboard() {
     }
   };
 
+  const changeTimeNoMask = () => {
+    Axios.get("http://localhost:3001/nomaskat", { params: { dateQuery: dateQuery, dateQuery2: dateQuery2 } }).then((response) => {
+      console.log(response.data);
+      setNoMaskList(response.data);
+    });
+    {
+      maskList1.map((val, key) => {
+        dataMaskDate1.push(val.Date),
+          dataMask1.push(val.Amount)
+      })
+    }
+  }
+
   //ทั้งหมด
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -134,14 +179,27 @@ function Dashboard() {
   const A = () => {
     if (check < 10) {
       if (check < 3) {
-        getMaskAllList();
+        if (dateQuery == "" && dateQuery2 == "") {
+          console.log("a");
+          getMaskAllList();
+        }
+        else {
+          console.log("b");
+          changeTime();
+        }
       }
 
       console.log(dataMaskAllDate);
       //console.log(maskAllList),
       if (check < 5) {
-        getMaskList();
-        getNoMaskList();
+        if (dateQuery == "" && dateQuery2 == "") {
+          getMaskList();
+          getNoMaskList();
+        }
+        else {
+          changeTimeMask();
+          changeTimeNoMask();
+        }
       }
       //console.log(maskList),
       console.log(dataMask);
@@ -169,7 +227,7 @@ function Dashboard() {
           <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
 
             {/* Welcome banner */}
-            
+
 
 
             {/* Dashboard actions */}
@@ -189,10 +247,11 @@ function Dashboard() {
               {/* Right: Actions */}
               <div className="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-start gap-2">
                 {/* Filter button */}
-                
+
                 {/* Datepicker built with flatpickr */}
-                <Datepicker />
-                
+                {/* <Datepicker /> */}
+                {Datepicker()}
+
                 {/* Add view button */}
                 {/* <button className="btn bg-indigo-500 hover:bg-indigo-600 text-white">
                     <svg className="w-4 h-4 fill-current opacity-50 shrink-0" viewBox="0 0 16 16">
@@ -244,16 +303,17 @@ function Dashboard() {
 
 function DashboardCard04() {
   const chartData = {
-    labels: ['02-25-2023', '02-26-2023', '02-27-2023', '02-28-2023',],
-            //['12-01-2020', '01-01-2021', '02-01-2021','03-01-2021',],
+    labels: dataMaskAllDate,
+    // ['02-25-2023', '02-26-2023', '02-27-2023', '02-28-2023',],
+    //['12-01-2020', '01-01-2021', '02-01-2021','03-01-2021',],
     datasets: [
       // Light blue bars
       {
         label: 'Mask',
-        // data: dataMask,
-        data: [
-          20, 22, 35, 44, 10, 8,
-        ],
+        data: dataMask,
+        // data: [
+        //   20, 22, 35, 44, 10, 8,
+        // ],
         backgroundColor: tailwindConfig().theme.colors.indigo[400],
         hoverBackgroundColor: tailwindConfig().theme.colors.indigo[500],
         barPercentage: 0.66,
@@ -262,10 +322,10 @@ function DashboardCard04() {
       // Blue bars
       {
         label: 'No Mask',
-       // data: dataMask1,
-        data: [
-          20, 22, 35, 44, 10, 8,
-        ],
+        data: dataMask1,
+        // data: [
+        //   20, 22, 35, 44, 10, 8,
+        // ],
         backgroundColor: tailwindConfig().theme.colors.yellow[500],
         hoverBackgroundColor: tailwindConfig().theme.colors.yellow[600],
         barPercentage: 0.66,
@@ -289,22 +349,62 @@ function DashboardCard04() {
 
   return (
     <div>
-      <div className="grid grid-flow-col sm:auto-cols-max justify-end sm:justify-end gap-2">
+      {/* <div className="grid grid-flow-col sm:auto-cols-max justify-end sm:justify-end gap-2">
         <button class="btn btn-primary" >Refresh</button>
-      </div>
-      
+      </div> */}
+
       <div className="flex flex-col col-span-full sm:col-span-6 bg-white shadow-lg rounded-sm border border-slate-200">
-      <header className="px-5 py-4 border-b border-slate-100">
-          <h2 className=" text-slate-800">Mask VS No Mask</h2>        
-      </header>
-      
-      {/* Chart built with Chart.js 3 */}
-      {/* Change the height attribute to adjust the chart height */}
-      <BarChart data={chartData} width={595} height={430} />
-      
+        <header className="px-5 py-4 border-b border-slate-100">
+          <h2 className=" text-slate-800">Mask VS No Mask</h2>
+        </header>
+
+        {/* Chart built with Chart.js 3 */}
+        {/* Change the height attribute to adjust the chart height */}
+        <BarChart data={chartData} width={595} height={430} />
+
+      </div>
     </div>
+
+  );
+}
+
+function Datepicker() {
+
+  const options = {
+    mode: 'range',
+    static: true,
+    monthSelectorType: 'static',
+    dateFormat: 'm-j-Y',
+    defaultDate: [new Date().setDate(new Date().getDate() - 6), new Date()],
+    prevArrow: '<svg class="fill-current" width="7" height="11" viewBox="0 0 7 11"><path d="M5.4 10.8l1.4-1.4-4-4 4-4L5.4 0 0 5.4z" /></svg>',
+    nextArrow: '<svg class="fill-current" width="7" height="11" viewBox="0 0 7 11"><path d="M1.4 10.8L0 9.4l4-4-4-4L1.4 0l5.4 5.4z" /></svg>',
+    onReady: (selectedDates, dateStr, instance) => {
+      instance.element.value = dateStr.replace('to', '-');
+    },
+    onChange: (selectedDates, dateStr, instance) => {
+      instance.element.value = dateStr.replace('to', '-');
+      console.log(dateStr);
+      dateQuery = dateStr.substr(0, 10);
+      console.log("dateQuery");
+      console.log(dateQuery);
+      dateQuery2 = dateStr.substr(14, 10);
+      if (dateQuery2 == "") {
+        dateQuery2 = dateQuery;
+      }
+      console.log("dateQuery2");
+      console.log(dateQuery2);
+    },
+  }
+
+  return (
+    <div className="relative">
+      <Flatpickr className="form-input pl-9 text-slate-500 hover:text-slate-600 font-medium focus:border-slate-300 w-60" options={options} />
+      <div className="absolute inset-0 right-auto flex items-center pointer-events-none">
+        <svg className="w-4 h-4 fill-current text-slate-500 ml-3" viewBox="0 0 16 16">
+          <path d="M15 2h-2V0h-2v2H9V0H7v2H5V0H3v2H1a1 1 0 00-1 1v12a1 1 0 001 1h14a1 1 0 001-1V3a1 1 0 00-1-1zm-1 12H2V6h12v8z" />
+        </svg>
+      </div>
     </div>
-    
   );
 }
 
