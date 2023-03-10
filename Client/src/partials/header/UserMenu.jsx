@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Transition from '../../utils/Transition';
 
-import UserAvatar from '../../images/user-avatar-32.png';
+import UserAvatar from '../../images/user.jpg';
 
 function UserMenu() {
 
@@ -70,24 +70,7 @@ function UserMenu() {
             <div className="text-xs text-slate-500 italic">Administrator</div>
           </div>
           <ul>
-            <li>
-              <Link
-                className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
-                to="/"
-                onClick={() => setDropdownOpen(!dropdownOpen)}
-              >
-                Settings
-              </Link>
-            </li>
-            <li>
-              <Link
-                className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
-                to="/"
-                onClick={() => setDropdownOpen(!dropdownOpen)}
-              >
-                Sign Out
-              </Link>
-            </li>
+            
           </ul>
         </div>
       </Transition>

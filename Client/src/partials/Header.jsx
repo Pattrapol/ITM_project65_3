@@ -40,8 +40,7 @@ function Header({
           {/* Header: Right side */}
           <div className="flex items-center">
 
-            
-            <Help />
+          
             {/*  Divider */}
             <hr className="w-px h-6 bg-slate-200 mx-3" />
             <UserMenu />

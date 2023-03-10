@@ -86,7 +86,7 @@ var dateQuery2 = "";
 let check = 0;
 function Dashboard() {
 
-  const showChart = ["LineChart", "CircleChart"];
+  const showChart = ["LineChart", "Refresh"];
   const [myChart, setMyChart] = useState('');
 
   const [maskAllList, setMaskAllList] = useState([]);
@@ -286,7 +286,7 @@ function Dashboard() {
                     A(),
                     DashboardCard04()
                   )}
-                  {myChart === "CircleChart" && (
+                  {myChart === "Refresh" && (
                     <DashboardCard04 />
                   )}
 
