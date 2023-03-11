@@ -3,81 +3,27 @@ import React, { useState } from 'react';
 import Sidebar from '../partials/Sidebar';
 import Header from '../partials/Header';
 import BarChart from '../charts/BarChart01';
-// import Datepicker from '../partials/actions/Datepicker';
 import { tailwindConfig } from '../utils/Utils';
 import Flatpickr from 'react-flatpickr';
-
-
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.bundle.min";
+
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"></link>
 import Axios from 'axios';
 
 var dataMaskAllDate = [];
-/*function fetchMaskAllDate() {
-  {
-    maskAllList.map((val, key) => {
-      {
-        dataMaskAllDate.push(val.Date);
-      }
-    });
-  }
-  console.log("dataMaskAllDate = " + dataMaskAllDate);
-  return dataMaskAllDate;
-}*/
 
 //ใส่
 var dataMaskDate = [];
-/*function fetchMaskDate() {
-  {
-    maskList.map((val, key) => {
-      {
-        dataMaskDate.push(val.Date);
-      }
-    });
-  }
-  console.log("dataMaskDate = " + dataMaskDate);
-  return dataMaskDate;
-}*/
+
 var dataMask = [];
-/*function fetchMask() {
-  {
-    maskList.map((val, key) => {
-      {
-        dataMask.push(val.Amount);
-      }
-    });
-  }
-  console.log("datamask = " + dataMask);
-  return dataMask;
-}*/
 //ไม่ใส่
 var dataMaskDate1 = [];
-/*function fetchNoMaskDate() {
-  {
-    maskList1.map((val, key) => {
-      {
-        dataMaskDate1.push(val.Date);
-      }
-    });
-  }
-  console.log("dataMaskDate1 = " + dataMaskDate1);
-  return dataMaskDate1;
-}*/
+
 var dataMask1 = [];
-/*function fetchNoMask() {
-  {
-    maskList1.map((val, key) => {
-      {
-        dataMask1.push(val.Amount);
-      }
-    });
-  }
-  console.log("dataMask1 = " + dataMask1);
-  return dataMask1;
-}*/
+
 
 //export {lable2};
 var dateQuery = "";
@@ -232,18 +178,7 @@ function Dashboard() {
 
             {/* Dashboard actions */}
             <div className="sm:flex sm:justify-between sm:items-center mb-8">
-              {/* <button class="btn btn-primary" onClick={getMaskList}>
-                Show Chart
-              </button>
-              {maskList.map((val, key) => {
-                return (
-                  <div className="">
-                    <div className="">
-                      <p className="card-text">Name: {val.Status}</p>
-                    </div>
-                  </div>
-                )
-              })} */}
+             
               {/* Right: Actions */}
               <div className="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-start gap-2">
                 {/* Filter button */}
@@ -253,14 +188,9 @@ function Dashboard() {
                 {Datepicker()}
 
                 {/* Add view button */}
-                {/* <button className="btn bg-indigo-500 hover:bg-indigo-600 text-white">
-                    <svg className="w-4 h-4 fill-current opacity-50 shrink-0" viewBox="0 0 16 16">
-                        <path d="M15 7H9V1c0-.6-.4-1-1-1S7 .4 7 1v6H1c-.6 0-1 .4-1 1s.4 1 1 1h6v6c0 .6.4 1 1 1s1-.4 1-1V9h6c.6 0 1-.4 1-1s-.4-1-1-1z" />
-                    </svg>
-                    <span className="hidden xs:block ml-2">Add view</span>
-                </button>                 */}
+                
               </div>
-
+              
             </div>
             <div >
               <div
@@ -288,6 +218,7 @@ function Dashboard() {
                   )}
                   {myChart === "Refresh" && (
                     <DashboardCard04 />
+                    
                   )}
 
                 </p>
@@ -304,16 +235,13 @@ function Dashboard() {
 function DashboardCard04() {
   const chartData = {
     labels: dataMaskAllDate,
-    // ['02-25-2023', '02-26-2023', '02-27-2023', '02-28-2023',],
-    //['12-01-2020', '01-01-2021', '02-01-2021','03-01-2021',],
+    
     datasets: [
       // Light blue bars
       {
         label: 'Mask',
         data: dataMask,
-        // data: [
-        //   20, 22, 35, 44, 10, 8,
-        // ],
+        
         backgroundColor: tailwindConfig().theme.colors.indigo[400],
         hoverBackgroundColor: tailwindConfig().theme.colors.indigo[500],
         barPercentage: 0.66,
@@ -323,43 +251,26 @@ function DashboardCard04() {
       {
         label: 'No Mask',
         data: dataMask1,
-        // data: [
-        //   20, 22, 35, 44, 10, 8,
-        // ],
+       
         backgroundColor: tailwindConfig().theme.colors.yellow[500],
         hoverBackgroundColor: tailwindConfig().theme.colors.yellow[600],
         barPercentage: 0.66,
         categoryPercentage: 0.66,
       },
 
-      // Blue bars
-      // {
-      //   label: 'Refresh',
-      //   data: [
-      //     20, 22, 35, 44, 10, 8,
-      //   ],
-      //   backgroundColor: tailwindConfig().theme.colors.red[500],
-      //   hoverBackgroundColor: tailwindConfig().theme.colors.red[600],
-      //   barPercentage: 0.66,
-      //   categoryPercentage: 0.66,
-      // },
+     
     ],
   };
 
 
   return (
     <div>
-      {/* <div className="grid grid-flow-col sm:auto-cols-max justify-end sm:justify-end gap-2">
-        <button class="btn btn-primary" >Refresh</button>
-      </div> */}
+     
 
       <div className="flex flex-col col-span-full sm:col-span-6 bg-white shadow-lg rounded-sm border border-slate-200">
         <header className="px-5 py-4 border-b border-slate-100">
           <h2 className=" text-slate-800">Mask VS No Mask</h2>
         </header>
-
-        {/* Chart built with Chart.js 3 */}
-        {/* Change the height attribute to adjust the chart height */}
         <BarChart data={chartData} width={595} height={430} />
 
       </div>
