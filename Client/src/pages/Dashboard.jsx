@@ -10,7 +10,6 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
 
-
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"></link>
 import Axios from 'axios';
 
@@ -286,14 +285,16 @@ function Datepicker() {
     mode: 'range',
     static: true,
     monthSelectorType: 'static',
-    dateFormat: 'm-j-Y',
-    defaultDate: [new Date().setDate(new Date().getDate() - 6), new Date()],
+    dateFormat: 'm-d-Y',
+    defaultDate: [new Date().setDate(new Date().getDate() - 7), new Date().setDate(new Date().getDate() - 1)],
     prevArrow: '<svg class="fill-current" width="7" height="11" viewBox="0 0 7 11"><path d="M5.4 10.8l1.4-1.4-4-4 4-4L5.4 0 0 5.4z" /></svg>',
     nextArrow: '<svg class="fill-current" width="7" height="11" viewBox="0 0 7 11"><path d="M1.4 10.8L0 9.4l4-4-4-4L1.4 0l5.4 5.4z" /></svg>',
     onReady: (selectedDates, dateStr, instance) => {
+      //console.log(instance.element.value);
       instance.element.value = dateStr.replace('to', '-');
     },
     onChange: (selectedDates, dateStr, instance) => {
+      console.log(instance.element.value);
       instance.element.value = dateStr.replace('to', '-');
       console.log(dateStr);
       dateQuery = dateStr.substr(0, 10);
