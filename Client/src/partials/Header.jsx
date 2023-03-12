@@ -35,7 +35,7 @@ function Header({
             </button>
 
           </div>
-          <h2 className=" text-slate-800"> Face mask detection</h2> 
+          <h2 className=" text-slate-800"></h2> 
          
           {/* Header: Right side */}
           <div className="flex items-center">

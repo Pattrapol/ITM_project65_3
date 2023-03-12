@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import Sidebar from '../partials/Sidebar';
+import Welcome from '../partials/dashboard/WelcomeBanner';
 import Header from '../partials/Header';
 import BarChart from '../charts/BarChart01';
 import { tailwindConfig } from '../utils/Utils';
@@ -173,7 +174,7 @@ function Dashboard() {
           <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
 
             {/* Welcome banner */}
-
+            <Welcome/>
 
 
             {/* Dashboard actions */}
@@ -269,7 +270,7 @@ function DashboardCard04() {
 
       <div className="flex flex-col col-span-full sm:col-span-6 bg-white shadow-lg rounded-sm border border-slate-200">
         <header className="px-5 py-4 border-b border-slate-100">
-          <h2 className=" text-slate-800">Mask VS No Mask</h2>
+          <h2 className=" text-slate-800"></h2>
         </header>
         <BarChart data={chartData} width={595} height={430} />
 
