@@ -33,84 +33,56 @@ const People = () => {
     </header>
     <body>
 
-        <div className="flex items-center">
-            <img src="/images/เพชร.jpg" width={300} />
-            <div>
-                <h1>
-                    ชื่อ : นายภัทรพล แจ่มจำรัส
-                </h1>
-                <h2>
-                    รหัสนิสิต : 6320502479 
-                </h2>
-                 <h3>
-                    ตำแหน่ง : คน   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; หน้าที่ : ทำเว็ป
-                 </h3>
-            </div>
-            </div>
-
-            <div className="flex items-center">
-            <img src="/images/แต้ม.jpg" width={300} />
-            <div>
-                <h1>
-                    ชื่อ : นายภัทรพล แจ่มจำรัส
-                </h1>
-                <h2>
-                    รหัสนิสิต : 6320502479 
-                </h2>
-                 <h3>
-                    ตำแหน่ง : คน   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; หน้าที่ : ทำเว็ป
-                 </h3>
-            </div>
-            </div>
-
-            <div className="flex items-center">
-            <img src="/images/บิ๊ก.jpg" width={300} />
-            <div>
-                <h1>
-                    ชื่อ : นายภัทรพล แจ่มจำรัส
-                </h1>
-                <h2>
-                    รหัสนิสิต : 6320502479 
-                </h2>
-                 <h3>
-                    ตำแหน่ง : คน   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; หน้าที่ : ทำเว็ป
-                 </h3>
-            </div>
-            </div>
-
-            <div className="flex items-center">
-            <img src="/images/บิ๊ก.jpg" width={300} />
-            <div>
-                <h1>
-                    ชื่อ : นายภัทรพล แจ่มจำรัส
-                </h1>
-                <h2>
-                    รหัสนิสิต : 6320502479 
-                </h2>
-                 <h3>
-                    ตำแหน่ง : คน   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; หน้าที่ : ทำเว็ป
-                 </h3>
-            </div>
-            </div>
-
-            <div className="flex items-center">
-            <img src="/images/เพชร.jpg" width={300} />
-            <div>
-                <h1>
-                    ชื่อ : นายภัทรพล แจ่มจำรัส
-                </h1>
-                <h2>
-                    รหัสนิสิต : 6320502479 
-                </h2>
-                 <h3>
-                    ตำแหน่ง : คน   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; หน้าที่ : ทำเว็ป
-                 </h3>
-            </div>
-            </div>
-            
-      
         
       
+        
+            <div class="py-20 bg-gray-50">
+    <div class="container mx-auto px-6 md:px-12 xl:px-32">
+        <div class="mb-16 text-center">
+            <h2 class="mb-4 text-center text-2xl text-gray-900 font-bold md:text-4xl">Tailus blocks leadership</h2>
+            <p class="text-gray-600 lg:w-8/12 lg:mx-auto">Tailus prides itself not only on award-winning technology, but also on the talent of its people of some of the brightest minds and most experienced executives in business.</p>
+        </div>
+        <div class="grid gap-12 items-center md:grid-cols-3">
+            <div class="space-y-4 text-center">
+            <img src="/images/เพชร.jpg" width={300} />
+                <div>
+                    <h4 class="text-2xl">นายภัทรพล แจ่มจำรัส</h4>
+                    <span class="block text-sm text-gray-500">member</span>
+                    <span class="block text-sm text-gray-500">Front-end Developer</span>
+                </div>
+                <img src="/images/ดิว.jpg" width={300} />
+                <div>
+                <h4 class="text-2xl">นายอัษฎาวุธ คล้ายเมือง</h4>
+                    <span class="block text-sm text-gray-500">member</span>
+                    <span class="block text-sm text-gray-500">Front-end Developer</span>
+                </div>
+            </div>
+            <div class="space-y-4 text-center">
+            <img src="/images/แต้ม.jpg" width={300} />
+                <div>
+                <h4 class="text-2xl">นายนเรศ เฟื่องเวโรจน์สกุล</h4>
+                    <span class="block text-sm text-gray-500">Project Manager</span>
+                    <span class="block text-sm text-gray-500">AI Developer</span>
+                </div>
+            </div>
+            <div class="space-y-4 text-center">
+            <img src="/images/พี.jpg" width={300} />
+                <div>
+                <h4 class="text-2xl">นายธิติพนธ์ สว่างศรี </h4>
+                    <span class="block text-sm text-gray-500">member</span>
+                    <span class="block text-sm text-gray-500">AI Developer</span>
+                </div>
+                <img src="/images/บิ๊ก.jpg" width={300} />
+                <div>
+                <h4 class="text-2xl">นายโรจนากร แย้มบางยาง     </h4>
+                    <span class="block text-sm text-gray-500">member</span>
+                    <span class="block text-sm text-gray-500">Back-end Developer</span>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
 
     </body>
     </div>
