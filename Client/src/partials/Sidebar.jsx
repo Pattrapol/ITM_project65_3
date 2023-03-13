@@ -1,8 +1,9 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import {Link} from "react-router-dom";
+
 import SidebarLinkGroup from './SidebarLinkGroup';
-import People from '../pages/People';
+
 function Sidebar({ sidebarOpen, setSidebarOpen }) {
   const location = useLocation();
   const { pathname } = location;
@@ -77,11 +78,9 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
             </svg>
           </button>
           {/* Logo */}
-          MIT GROUP4
           <NavLink end to="/" className="block">
             <svg width="32" height="32" viewBox="0 0 32 32">
               <defs>
-                
                 <linearGradient x1="28.538%" y1="20.229%" x2="100%" y2="108.156%" id="logo-a">
                   <stop stopColor="#A5B4FC" stopOpacity="0" offset="0%" />
                   <stop stopColor="#A5B4FC" offset="100%" />
@@ -103,6 +102,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
               />
             </svg>
           </NavLink>
+          MIT group 3
         </div>
 
         {/* Links */}
@@ -122,13 +122,13 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                   return (
                     <React.Fragment>
                       <a
-                        href="#"
+                        href="#0"
                         className={`block text-slate-200 hover:text-white truncate transition duration-150 ${
                           (pathname === '/' || pathname.includes('dashboard')) && 'hover:text-slate-200'
                         }`}
                         onClick={(e) => {
-                          
-                          
+                          e.preventDefault();
+                          sidebarExpanded ? handleClick() : setSidebarExpanded(true);
                         }}
                       >
                         <div className="flex items-center justify-between">
@@ -149,65 +149,50 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                                 d="M12 15c-1.654 0-3-1.346-3-3 0-.462.113-.894.3-1.285L6 6l4.714 3.301A2.973 2.973 0 0112 9c1.654 0 3 1.346 3 3s-1.346 3-3 3z"
                               />
                             </svg>
-                            <Link to='/'> Dashboard </Link>
+                            <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                              Dashboard
+                            </span>
                           </div>
-                          
                           {/* Icon */}
-                          
-                        </div>
-                        
-                      </a>
-                      
-                    </React.Fragment>
-                  );
-                }}
-              </SidebarLinkGroup>
-              <SidebarLinkGroup activecondition={pathname === '/' || pathname.includes('dashboard')}>
-                {(handleClick, open) => {
-                  return (
-                    <React.Fragment>
-                      <a
-                        href="#"
-                        className={`block text-slate-200 hover:text-white truncate transition duration-150 ${
-                          (pathname === '/' || pathname.includes('dashboard')) && 'hover:text-slate-200'
-                        }`}
-                        onClick={(e) => {
-                          
-                          
-                        }}
-                      >
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center">
-                            <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
-                              <path
-                                className={`fill-current text-slate-400 ${
-                                  (pathname === '/' || pathname.includes('dashboard')) && '!text-indigo-500'
-                                }`}
-                                d="M12 0C5.383 0 0 5.383 0 12s5.383 12 12 12 12-5.383 12-12S18.617 0 12 0z"
-                              />
-                              <path
-                                className={`fill-current text-slate-600 ${(pathname === '/' || pathname.includes('dashboard')) && 'text-indigo-600'}`}
-                                d="M12 3c-4.963 0-9 4.037-9 9s4.037 9 9 9 9-4.037 9-9-4.037-9-9-9z"
-                              />
-                              <path
-                                className={`fill-current text-slate-400 ${(pathname === '/' || pathname.includes('dashboard')) && 'text-indigo-200'}`}
-                                d="M12 15c-1.654 0-3-1.346-3-3 0-.462.113-.894.3-1.285L6 6l4.714 3.301A2.973 2.973 0 0112 9c1.654 0 3 1.346 3 3s-1.346 3-3 3z"
-                              />
+                          <div className="flex shrink-0 ml-2">
+                            <svg className={`w-3 h-3 shrink-0 ml-1 fill-current text-slate-400 ${open && 'rotate-180'}`} viewBox="0 0 12 12">
+                              <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
                             </svg>
-                            <Link to='People'> Member </Link>
                           </div>
-                          
-                          {/* Icon */}
-                          
                         </div>
-                        
                       </a>
-                      
+                      <div className="lg:hidden lg:sidebar-expanded:block 2xl:block">
+                        <ul className={`pl-9 mt-1 ${!open && 'hidden'}`}>
+                          <li className="mb-1 last:mb-0">
+                            <NavLink
+                              end
+                              to="/"
+                              className={({ isActive }) =>
+                                'block text-slate-400 hover:text-slate-200 transition duration-150 truncate ' + (isActive ? '!text-indigo-500' : '')
+                              }
+                            >
+                              <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                              Analytics Chart
+                              </span>
+                            </NavLink>
+                          </li>
+                          <li className="mb-1 last:mb-0">
+                            <NavLink
+                              end
+                              to="/People"
+                              className="block text-slate-400 hover:text-slate-200 transition duration-150 truncate"
+                            >
+                              <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                                Member
+                              </span>
+                            </NavLink>
+                          </li>
+                        </ul>
+                      </div>
                     </React.Fragment>
                   );
                 }}
-              </SidebarLinkGroup>
-             
+                </SidebarLinkGroup>
             </ul>
           </div>
         </div>
