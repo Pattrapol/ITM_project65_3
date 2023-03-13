@@ -11,7 +11,7 @@ function WelcomeBanner() {
 
       {/* Content */}
       <div className="relative">
-        <h1 className="text-2xl md:text-3xl text-slate-800 font-bold mb-1">Mask wearing statistics at Building 9, Faculty of Engineering, Kamphaengsaen</h1>
+        <h1 className="text-2xl md:text-3xl text-slate-800 font-bold mb-1">Mask wearing statistics at Computer Engineering Student Room, Kamphaengsaen</h1>
         <p>COVID-19: Face mask detection</p>
       </div>
 
