@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/mask', (req, res) => {
-    db.query("SELECT DATE_FORMAT(date, '%m-%d-%Y') AS Date, COUNT(mask) AS Amount, mask FROM `people` WHERE mask = 'ใส่' AND DATE_FORMAT(date, '%m-%d-%Y') BETWEEN DATE_FORMAT(DATE_ADD(current_Date()-7, INTERVAL 10 HOUR) GROUP BY date, mask ORDER BY date, mask;", 
+    db.query("SELECT DATE_FORMAT(date, '%m-%d-%Y') AS Date, COUNT(mask) AS Amount, mask FROM `people` WHERE mask = 'ใส่' AND DATE_FORMAT(date, '%m-%d-%Y') BETWEEN DATE_FORMAT(DATE_ADD(current_Date()-7, INTERVAL 10 HOUR), '%m-%d-%Y') AND DATE_FORMAT(DATE_ADD(current_Date()-1, INTERVAL 10 HOUR), '%m-%d-%Y') GROUP BY date, mask ORDER BY date, mask;", 
     (err, result) => {
         if (err) {
             console.log(err);
@@ -53,7 +53,7 @@ app.get('/maskat', (req, res) => {
 });
 
 app.get('/nomask', (req, res) => {
-    db.query("SELECT DATE_FORMAT(date, '%m-%d-%Y') AS Date, COUNT(mask) AS Amount, mask FROM `people` WHERE mask = 'ไม่ใส่' AND DATE_FORMAT(date, '%m-%d-%Y') BETWEEN DATE_FORMAT(DATE_ADD(current_Date()-7, INTERVAL 10 HOUR) GROUP BY date, mask ORDER BY date, mask;", 
+    db.query("SELECT DATE_FORMAT(date, '%m-%d-%Y') AS Date, COUNT(mask) AS Amount, mask FROM `people` WHERE mask = 'ไม่ใส่' AND DATE_FORMAT(date, '%m-%d-%Y') BETWEEN DATE_FORMAT(DATE_ADD(current_Date()-7, INTERVAL 10 HOUR), '%m-%d-%Y') AND DATE_FORMAT(DATE_ADD(current_Date()-1, INTERVAL 10 HOUR), '%m-%d-%Y') GROUP BY date, mask ORDER BY date, mask;", 
     (err, result) => {
         if (err) {
             console.log(err);
