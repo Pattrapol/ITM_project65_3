@@ -2,6 +2,7 @@
 
 <p id="description">Project นี้เป็นส่วนหนึ่งของรายวิชา Management of Information Technology 02204372-60</p>
 
+ เอกสารส่งมอบอยู่ใน Folder/model/Document
 ## สมาชิกในทีม
 
 | ชื่อ | หน้าที่ |
