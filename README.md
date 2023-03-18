@@ -86,6 +86,6 @@ V. Train Model AI/ Evaluate
 <p> การใช้ confusion matrix เป็นตัววัดความแม่นยำของโมเดลที่สำคัญมากในงาน classification เพราะสามารถแสดงผลการทำนายของโมเดลในแต่ละหมวดหมู่ได้อย่างชัดเจน ทำให้เราสามารถวิเคราะห์ปัญหาและปรับปรุงโมเดลได้อย่างมีประสิทธิภาพ โดยเฉพาะในงานการตรวจจับบุคคลใส่และไม่ใส่แมส โดยการใช้ confusion matrix สามารถแสดงให้เห็นได้อย่างชัดเจนว่าโมเดลของเรามีประสิทธิภาพในการตรวจจับในแต่ละกรณีได้มากน้อยเพียงใด และสามารถช่วยปรับปรุงโมเดลให้มีประสิทธิภาพในการตรวจจับแบบเฉพาะเจาะจงได้อย่างมีประสิทธิภาพ</p>
 <img src="https://github.com/nared45/Face-mask-Detection/blob/main/Model/confu.png" alt="con" width="1000" height="500"/>
 
-<p>Result</p>
-<iframe width="560" height="315" src="https://youtu.be/qh8PUqT4_o0" frameborder="0" allowfullscreen></iframe>
+
+
 
