@@ -86,4 +86,5 @@ V. Train Model AI/ Evaluate
 <img src="https://github.com/nared45/Face-mask-Detection/blob/main/Model/confu.png" alt="con" width="1000" height="500"/>
 
 <p>Result</p>
-<img src="https://github.com/nared45/Face-mask-Detection/blob/main/Model/messageImage_1676042941638.jpg" alt="MBnV2" width="1000" height="500"/>
+<iframe width="560" height="315" src="https://youtu.be/qh8PUqT4_o0" frameborder="0" allowfullscreen></iframe>
+
